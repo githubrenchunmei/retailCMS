@@ -9,11 +9,15 @@ export default {
   name: 'login',
   data () {
     return {
-      num: this.store.test
+    }
+  },
+  computed: {
+    num () {
+      return this.$store.state.test
     }
   },
   mounted () {
-    this.store.commit('SET_TEST', '1')
+    // this.$store.commit('SET_TEST', '1')
   }
 }
 </script>
