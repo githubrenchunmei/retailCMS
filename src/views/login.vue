@@ -1,10 +1,12 @@
 <template>
   <div class="login">
-    login{{num}}
+    login
+    {{num}}
   </div>
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex'
 export default {
   name: 'login',
   data () {
@@ -12,12 +14,17 @@ export default {
     }
   },
   computed: {
-    num () {
-      return this.$store.state.test
-    }
+    ...mapState({
+      num: state => state.test
+    })
+  },
+  methods: {
+    ...mapMutations({
+      setNum: 'SET_TEST'
+    })
   },
   mounted () {
-    // this.$store.commit('SET_TEST', '1')
+    this.setNum('888')
   }
 }
 </script>
