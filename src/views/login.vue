@@ -1,5 +1,6 @@
 <template>
   <div class="login">
+    <h3>后台管理系统</h3>
     <el-form :mode="form" class="login-form">
       <el-form-item>
         <el-input v-model="form.loginName" type="text" :clearable="true"></el-input>
@@ -53,9 +54,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="stylus">
-@import '../common/stylus/base.styl'
+@import '../common/stylus/variables.styl'
 .login
-  .login-form
-    width:300px
-    margin:100px auto
+  width:18%
+  position:absolute
+  top:50%
+  left:50%
+  transform:translateY(-50%) translateX(-50%)
 </style>

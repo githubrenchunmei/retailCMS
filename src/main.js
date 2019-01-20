@@ -7,7 +7,7 @@ import store from './store'
 import api from './http/index'
 import ElementUI from 'element-ui'
 import './theme/index.css'
-// import 'element-ui/lib/theme-chalk/index.css'
+import './common/stylus/index.styl'
 
 Vue.config.productionTip = false
 Vue.use(api)

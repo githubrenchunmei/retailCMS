@@ -31,7 +31,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="stylus">
-@import '../../common/stylus/base.styl'
+@import '../../common/stylus/variables.styl'
 .system
   color: $theme-color
 </style>
