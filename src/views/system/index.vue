@@ -1,13 +1,13 @@
 <template>
-  <div class="system">
-    this is system
+  <div class="system-index">
+    this is system index
   </div>
 </template>
 
 <script>
 import { mapState, mapMutations } from 'vuex'
 export default {
-  name: 'system',
+  name: 'system-index',
   data () {
     return {
     }

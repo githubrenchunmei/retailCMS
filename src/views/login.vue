@@ -1,24 +1,25 @@
 <template>
   <div class="login">
-    <h3>后台管理系统</h3>
+    <div class="content">
+      <h3>后台业务管理系统</h3>
     <el-form :mode="form" class="login-form">
       <el-form-item>
         <el-input v-model="form.loginName" type="text" :clearable="true"></el-input>
+        <i class="iconfont icon-user2"></i>
       </el-form-item>
       <el-form-item>
         <el-input v-model="form.loginPassword" type="password" :clearable="true"></el-input>
+        <i class="iconfont icon-psw"></i>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="onLoginBtn" style="width:100%">登录</el-button>
       </el-form-item>
     </el-form>
+    </div>
   </div>
 </template>
 
 <script>
-// element-theme@2.0.1
-// webpack-dev-server@3.1.14
-// webpack-dev-middleware@3.4.0
 import { mapState, mapMutations } from 'vuex'
 export default {
   name: 'login',
@@ -32,22 +33,20 @@ export default {
   },
   computed: {
     ...mapState({
-      num: state => state.test
+      userInfo: state => state.userInfo
     })
   },
   methods: {
     ...mapMutations({
-      setNum: 'SET_TEST'
+      setUserInfo: 'SET_USERINFO'
     }),
     onLoginBtn () {
-      console.log('login...')
       this.$api.login(this.form).then((data) => {
-        console.log(data)
+        this.setUserInfo(data)
+        this.$message.success('登录成功')
+        this.$router.push('/index')
       })
     }
-  },
-  mounted () {
-    this.setNum('888')
   }
 }
 </script>
@@ -55,10 +54,31 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="stylus">
 @import '../common/stylus/variables.styl'
+.login >>> .el-input__inner
+  padding-left: .4rem
 .login
-  width:18%
-  position:absolute
-  top:50%
-  left:50%
-  transform:translateY(-50%) translateX(-50%)
+  width: 100%
+  height: 100%
+  background: url('~@src/login-background.png') no-repeat
+  .content
+    width: 18%
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translateY(-50%) translateX(-50%)
+    h3
+      font-size: .27rem
+      line-height: .27rem
+      font-weight: bold
+      letter-spacing: .08rem
+      text-align: center
+      color: #fff
+      margin-bottom: .72rem
+    .el-form
+      .el-form-item
+        position: relative
+        .iconfont
+          position: absolute
+          left: .1rem
+          color: #606266
 </style>

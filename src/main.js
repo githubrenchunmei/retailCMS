@@ -8,6 +8,7 @@ import api from './http/index'
 import ElementUI from 'element-ui'
 import './theme/index.css'
 import './common/stylus/index.styl'
+import './common/icon-font/iconfont.css'
 
 Vue.config.productionTip = false
 Vue.use(api)

@@ -11,5 +11,8 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-
+#app
+  min-width: 960px
+  height:100%
+  position: relative
 </style>

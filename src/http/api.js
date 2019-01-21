@@ -3,6 +3,7 @@ import config from './config'
 import qs from 'qs'
 import Cookies from 'js-cookie'
 import router from '@/router'
+import { Message } from 'element-ui'
 
 // 使用vuex做全局loading时使用
 // import store from '@/store'
@@ -73,24 +74,15 @@ export default function $axios (options) {
         } else {
           data = response.data
         }
-
-        // 根据返回的code值来做不同的处理
-        // switch (data.rc) {
-        //   case 1:
-        //     console.log(data.desc)
-        //     break
-        //   case 0:
-        //     store.commit('changeState')
-        //     // console.log('登录成功')
-        //   default:
-        // }
-        // 若不是正确的返回code，且已经登录，就抛出错误
-        // const err = new Error(data.desc)
-        // err.data = data
-        // err.response = response
-        // throw err
-
-        return data
+        // 拦截status=200时服务端自定义的错误
+        switch (data.errno) {
+          case '200':
+            break
+          default:
+            Message.error(data.msg)
+            break
+        }
+        return data.data
       },
       err => {
         if (err && err.response) {
