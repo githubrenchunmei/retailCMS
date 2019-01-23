@@ -1,4 +1,4 @@
-// index页下主导航及相应子导航配置
+// 主导航及相应子导航配置
 const nav = [
   {
     name: 'system',
@@ -7,13 +7,13 @@ const nav = [
       {
         name: 'systemIndex',
         desc: '系统首页',
-        path: '/system/index',
-        component: resolve => { require(['@/views/system/index'], resolve) }
+        path: '/index/system-home',
+        component: resolve => { require(['@/views/system/home'], resolve) }
       },
       {
         name: 'accountSettings',
         desc: '账户设置',
-        path: '/system/account',
+        path: '/index/system-account',
         component: resolve => { require(['@/views/system/account'], resolve) }
       }
     ]
@@ -23,16 +23,31 @@ const nav = [
     desc: '商品',
     children: [
       {
-        name: 'systemIndex',
+        name: 'goodList',
         desc: '商品列表',
-        path: '/goods/list'
+        path: '/index/goods-list'
       },
       {
         name: 'addGoods',
         desc: '添加商品',
-        path: '/goods/add'
+        path: '/index/goods-add'
       }
     ]
+  },
+  {
+    name: 'orders',
+    desc: '订单',
+    children: []
+  },
+  {
+    name: 'store',
+    desc: '库存',
+    children: []
+  },
+  {
+    name: 'users',
+    desc: '用户',
+    children: []
   }
 ]
 function getPathConfig (nav) {

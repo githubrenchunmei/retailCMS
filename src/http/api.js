@@ -1,7 +1,7 @@
 import axios from 'axios'
 import config from './config'
 import qs from 'qs'
-import Cookies from 'js-cookie'
+// import Cookies from 'js-cookie'
 import router from '@/router'
 import { Message } from 'element-ui'
 
@@ -20,17 +20,18 @@ export default function $axios (options) {
     // request 拦截器
     instance.interceptors.request.use(
       config => {
-        let token = Cookies.get('markToken')
+        // let token = Cookies.get('markToken')
         // 1. 请求开始的时候可以结合 vuex 开启全屏 loading 动画
         // console.log(store.state.loading)
         // console.log('准备发送请求...')
         // 2. 带上token
-        if (token) {
-          config.headers.accessToken = token
-        } else {
-          // 重定向到登录页面
-          router.push('/login')
-        }
+        // if (token) {
+        //   config.headers.accessToken = token
+        // } else {
+        //   // 重定向到登录页面
+        //   router.push('/login')
+        // }
+
         // 3. 根据请求方法，序列化传来的参数，根据后端需求是否序列化
         if (config.type === 'form-data') {
           config.headers['Content-Type'] = 'application/x-www-form-urlencoded'

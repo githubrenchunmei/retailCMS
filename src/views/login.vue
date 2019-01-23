@@ -43,8 +43,8 @@ export default {
     onLoginBtn () {
       this.$api.login(this.form).then((data) => {
         this.setUserInfo(data)
-        this.$message.success('登录成功')
         this.$router.push('/index')
+        this.$message.success('登录成功')
       })
     }
   }
@@ -79,6 +79,7 @@ export default {
         position: relative
         .iconfont
           position: absolute
+          top: 0
           left: .1rem
           color: #606266
 </style>

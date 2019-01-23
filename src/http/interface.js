@@ -13,8 +13,17 @@ const login = (data) => {
     data
   })
 }
+const getOrderAllCount = (data) => {
+  return axios({
+    url: '/merchant_order/getOrderAllCount',
+    method: 'post',
+    type: 'json-data',
+    data
+  })
+}
 
 // 默认全部导出
 export default {
-  login
+  login,
+  getOrderAllCount
 }
