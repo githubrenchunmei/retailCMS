@@ -7,7 +7,7 @@
           <span class="nav-item"
           v-for="(item, index) in nav"
           :key="item.name"
-          @click="handleParentNav(index)"
+          @click="onParentNavClick(index)"
           :class="{active:index===currentNavIndex}"
           >{{item.desc}}</span>
         </div>
@@ -21,10 +21,15 @@
     </header>
     <div class="main center">
       <div class="sub-nav">
-        <router-link :to="item.path" v-for="item in subNav" :key="item.name">{{item.desc}}</router-link>
+        <router-link :to="item.path" v-for="(item, index) in subNav" :key="item.name" @click.native="onSubNavClick(index)">{{item.desc}}</router-link>
       </div>
       <div class="content">
-        <router-view/>
+        <div class="current-nav">
+          <span>{{currentNav}}</span>
+        </div>
+        <div class="view">
+          <router-view/>
+        </div>
       </div>
     </div>
   </div>
@@ -39,14 +44,20 @@ export default {
     return {
       nav,
       subNav: nav[0].children,
-      currentNavIndex: 0
+      currentNavIndex: 0,
+      currentSubNavIndex: 0
     }
   },
-  mounted () {
-    console.log(nav)
+  computed: {
+    currentNav: function () {
+      return this.subNav[this.currentSubNavIndex].desc
+    }
   },
   methods: {
-    handleParentNav (index) {
+    onSubNavClick (index) {
+      this.currentSubNavIndex = index
+    },
+    onParentNavClick (index) {
       this.subNav = this.nav[index].children
       this.currentNavIndex = index
     }
@@ -133,6 +144,20 @@ export default {
     .content
       width:84%
       height:100%
-      padding-top:.36rem
-      padding-left:.44rem
+      .view
+        box-sizing:border-box
+        width:100%
+        padding:0 .44rem
+      .current-nav
+        width:100%
+        height: .6rem
+        background: $background-color
+        line-height:.6rem
+        margin-bottom:.36rem
+        span
+          border-left:.14rem solid $theme-color
+          padding-left:.3rem
+          font-size:.21rem
+          font-weight:bold
+
 </style>

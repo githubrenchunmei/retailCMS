@@ -21,9 +21,18 @@ const getOrderAllCount = (data) => {
     data
   })
 }
+const merchantIndex = (data) => {
+  return axios({
+    url: '/merchant/merchant_index',
+    method: 'post',
+    type: 'json-data',
+    data
+  })
+}
 
 // 默认全部导出
 export default {
   login,
-  getOrderAllCount
+  getOrderAllCount,
+  merchantIndex
 }
