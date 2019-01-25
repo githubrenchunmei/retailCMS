@@ -19,7 +19,7 @@ const router = new Router({
     {
       path: '/index',
       name: 'index',
-      redirect: '/index/system-home',
+      redirect: '/system/index',
       component: resolve => { require(['@/views/index'], resolve) },
       children: pathConfig
     }

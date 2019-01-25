@@ -19,17 +19,16 @@
         </div>
       </div>
     </header>
+    <div class="current-nav">
+      <span class="par-nav">{{nav[currentNavIndex].desc}}</span>
+      <span class="sub-nav">{{currentNav}}</span>
+    </div>
     <div class="main center">
       <div class="sub-nav">
         <router-link :to="item.path" v-for="(item, index) in subNav" :key="item.name" @click.native="onSubNavClick(index)">{{item.desc}}</router-link>
       </div>
       <div class="content">
-        <div class="current-nav">
-          <span>{{currentNav}}</span>
-        </div>
-        <div class="view">
-          <router-view/>
-        </div>
+        <router-view/>
       </div>
     </div>
   </div>
@@ -119,6 +118,21 @@ export default {
           i
             padding-right:.12rem
             margin:0
+  .current-nav
+    width:100%
+    height: .6rem
+    background: $background-color
+    line-height:.6rem
+    span
+      font-size:.21rem
+      font-weight:bold
+    .par-nav
+      width:16%
+      display:inline-block
+      text-align:center
+    .sub-nav
+      border-left:.14rem solid $theme-color
+      padding-left:.3rem
   .main
     width:100%
     height:100%
@@ -144,20 +158,7 @@ export default {
     .content
       width:84%
       height:100%
-      .view
-        box-sizing:border-box
-        width:100%
-        padding:0 .44rem
-      .current-nav
-        width:100%
-        height: .6rem
-        background: $background-color
-        line-height:.6rem
-        margin-bottom:.36rem
-        span
-          border-left:.14rem solid $theme-color
-          padding-left:.3rem
-          font-size:.21rem
-          font-weight:bold
-
+      box-sizing:border-box
+      width:100%
+      padding:.36rem .44rem
 </style>

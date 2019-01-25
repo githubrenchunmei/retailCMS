@@ -226,6 +226,7 @@ _border()
                 cursor:pointer
               i
                 font-size:.52rem
+                font-style: normal
               p
                 font-size:.18rem
                 line-height:.18rem
@@ -245,6 +246,7 @@ _border()
             div
               i
                 font-size:.22rem
+                font-style: normal
                 color:$red
               p
                 font-size:.18rem

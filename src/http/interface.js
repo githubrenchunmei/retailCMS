@@ -29,10 +29,19 @@ const merchantIndex = (data) => {
     data
   })
 }
+const changePassword = (data) => {
+  return axios({
+    url: '/merchant/change_password',
+    method: 'post',
+    type: 'form-data',
+    data
+  })
+}
 
 // 默认全部导出
 export default {
-  login,
+  changePassword,
   getOrderAllCount,
+  login,
   merchantIndex
 }

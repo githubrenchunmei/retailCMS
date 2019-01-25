@@ -7,13 +7,13 @@ const nav = [
       {
         name: 'systemIndex',
         desc: '系统首页',
-        path: '/index/system-home',
-        component: resolve => { require(['@/views/system/home'], resolve) }
+        path: '/system/index',
+        component: resolve => { require(['@/views/system/index'], resolve) }
       },
       {
         name: 'accountSettings',
         desc: '账户设置',
-        path: '/index/system-account',
+        path: '/system/account',
         component: resolve => { require(['@/views/system/account'], resolve) }
       }
     ]
