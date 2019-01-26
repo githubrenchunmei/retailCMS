@@ -39,6 +39,11 @@ export default function $axios (options) {
         } else if (config.type === 'json-data') {
           config.headers['Content-Type'] = 'application/json; charset=UTF-8'
           config.data = JSON.stringify(config.data)
+        } else if (config.type === 'file') {
+          // config.headers['Content-Type'] = 'multipart/form-data'
+          let formDate = new FormData()
+          formDate.append('file', config.data)
+          config.data = formDate
         }
         return config
       },
@@ -81,7 +86,7 @@ export default function $axios (options) {
             break
           default:
             Message.error(data.msg)
-            break
+            return Promise.reject(data)
         }
         return data.data
       },

@@ -37,11 +37,29 @@ const changePassword = (data) => {
     data
   })
 }
+const uploadFile = (data) => {
+  return axios({
+    url: '/merchant/upload_file',
+    method: 'post',
+    type: 'file',
+    data
+  })
+}
+const getMerchantLoginInfoList = (data) => {
+  return axios({
+    url: '/merchant/get_merchant_login_info_list',
+    method: 'post',
+    type: 'form-data',
+    data
+  })
+}
 
 // 默认全部导出
 export default {
   changePassword,
+  getMerchantLoginInfoList,
   getOrderAllCount,
   login,
-  merchantIndex
+  merchantIndex,
+  uploadFile
 }

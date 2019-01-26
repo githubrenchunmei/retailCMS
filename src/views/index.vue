@@ -12,7 +12,8 @@
           >{{item.desc}}</span>
         </div>
         <div class="info-icons">
-          <span><i class="iconfont icon-user2"></i>admin</span>
+          <img :src="avatar" alt="avatar">
+          <span>{{this.userInfo.merchantName}}</span>
           <i class="iconfont icon-home1"></i>
           <i class="iconfont icon-lingdang"></i>
           <i class="iconfont icon-kaiguan"></i>
@@ -36,21 +37,29 @@
 
 <script>
 import {nav} from '@/router/config'
-// import { mapState, mapMutations } from 'vuex'
+import { mapState } from 'vuex'
 export default {
   name: 'index',
   data () {
     return {
+      avatar: '',
       nav,
       subNav: nav[0].children,
       currentNavIndex: 0,
       currentSubNavIndex: 0
     }
   },
+  mounted () {
+    console.log(this.userInfo)
+    this.avatar = this.userInfo.imgUrl + this.userInfo.merchantLogo
+  },
   computed: {
     currentNav: function () {
       return this.subNav[this.currentSubNavIndex].desc
-    }
+    },
+    ...mapState({
+      userInfo: (state) => state.userInfo
+    })
   },
   methods: {
     onSubNavClick (index) {
@@ -105,6 +114,13 @@ export default {
           &:hover
             cursor: pointer
       .info-icons
+        display:flex
+        align-items:center
+        img
+          width:.4rem
+          height:.4rem
+          border-radius:50%
+          margin-right:.3rem
         i
           display:inline-block
           height:.3rem

@@ -15,6 +15,18 @@ const nav = [
         desc: '账户设置',
         path: '/system/account',
         component: resolve => { require(['@/views/system/account'], resolve) }
+      },
+      {
+        name: 'systemInfo',
+        desc: '系统信息',
+        path: '/system/info',
+        component: resolve => { require(['@/views/system/info'], resolve) }
+      },
+      {
+        name: 'systemLog',
+        desc: '登录日志',
+        path: '/system/log',
+        component: resolve => { require(['@/views/system/log'], resolve) }
       }
     ]
   },

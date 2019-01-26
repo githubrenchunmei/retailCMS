@@ -8,6 +8,7 @@
       :show-file-list="false">
       <img class="uploading-img-img" :src="avatar">
       <div slot="tip" class="el-upload__tip">上传头像</div>
+      <div slot="tip" class="el-upload__tip">只能上传jpeg/png文件</div>
     </el-upload>
     <el-form :model="ruleForm"  ref="ruleForm" :rules="rules" label-width="80px" required>
       <el-form-item label="用户名" prop="name">
@@ -37,7 +38,7 @@ export default {
     var validatePass2 = (roule, value, callback) => {
       if (value === '') {
         callback(new Error('请再次输入密码'))
-      } else if (this.form.newPassword !== value) {
+      } else if (this.ruleForm.newPassword !== value) {
         callback(new Error('两次输入密码不一致'))
       } else {
         callback()
@@ -67,11 +68,17 @@ export default {
   },
   methods: {
     onSubmit () {
-      this.$api.changePassword(this.form).then((data) => {
-        console.log(data)
+      this.$api.changePassword(this.ruleForm).then((data) => {
+        this.$message.success('账户设置成功')
       })
     },
-    uploadFile () {},
+    uploadFile (file) {
+      this.$api.uploadFile(file.file).then((data) => {
+        console.log(data)
+        this.ruleForm.merchantLogo = data.image
+        this.avatar = this.userInfo.imgUrl + data.image
+      })
+    },
     ...mapMutations({
       setNum: 'SET_TEST'
     })
@@ -79,7 +86,6 @@ export default {
   mounted () {
     this.ruleForm.name = this.userInfo.merchantName
     this.avatar = this.userInfo.imgUrl + this.userInfo.merchantLogo
-    console.log(this.avater)
   }
 }
 </script>
