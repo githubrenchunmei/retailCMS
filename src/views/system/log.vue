@@ -108,6 +108,7 @@ export default {
     width:12.96rem
     height:.52rem
     line-height:.52rem
+    vertical-align:middle
     text-align:right
     margin:0 auto
     border:.01rem solid $border-color-dark

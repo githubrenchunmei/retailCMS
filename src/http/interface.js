@@ -53,6 +53,30 @@ const getMerchantLoginInfoList = (data) => {
     data
   })
 }
+const queryGoodsTypeTree = (data) => {
+  return axios({
+    url: '/merchantGoodsType/query_goods_type_tree',
+    method: 'post',
+    type: 'form-data',
+    data
+  })
+}
+const queryBrandList = (data) => {
+  return axios({
+    url: '/merchant_goods_brand/query_list',
+    method: 'post',
+    type: 'form-data',
+    data
+  })
+}
+const merchantGoodsListPage = (data) => {
+  return axios({
+    url: '/merchantGoods/merchant_goods_list_page',
+    method: 'post',
+    type: 'json-data',
+    data
+  })
+}
 
 // 默认全部导出
 export default {
@@ -61,5 +85,8 @@ export default {
   getOrderAllCount,
   login,
   merchantIndex,
+  merchantGoodsListPage,
+  queryBrandList,
+  queryGoodsTypeTree,
   uploadFile
 }

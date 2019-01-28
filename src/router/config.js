@@ -37,12 +37,13 @@ const nav = [
       {
         name: 'goodList',
         desc: '商品列表',
-        path: '/index/goods-list'
+        path: '/goods/list',
+        component: resolve => { require(['@/views/goods/list'], resolve) }
       },
       {
         name: 'addGoods',
         desc: '添加商品',
-        path: '/index/goods-add'
+        path: '/goods/add'
       }
     ]
   },

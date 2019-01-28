@@ -50,7 +50,6 @@ export default {
     }
   },
   mounted () {
-    console.log(this.userInfo)
     this.avatar = this.userInfo.imgUrl + this.userInfo.merchantLogo
   },
   computed: {
@@ -68,6 +67,7 @@ export default {
     onParentNavClick (index) {
       this.subNav = this.nav[index].children
       this.currentNavIndex = index
+      this.$router.push(this.nav[index].children[0].path)
     }
   }
 }

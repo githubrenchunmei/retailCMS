@@ -1,5 +1,5 @@
 <template>
-  <div class="system-home">
+  <div class="system-index">
     <section class="order-count">
       <card :iconName="'icon-dingdan'" :title="'今日订单总数'" :num="this.OrderAllCount.todayOrderNum"></card>
       <card :iconName="'icon-dingdan'" :title="'今日销售额'" :num="this.OrderAllCount.todayOrderMoney"></card>
@@ -142,7 +142,7 @@
 import { mapState, mapMutations } from 'vuex'
 import Card from '@/components/card'
 export default {
-  name: 'system-home',
+  name: 'system-index',
   data () {
     return {
       OrderAllCount: {},
@@ -178,7 +178,7 @@ export default {
 @import '~@/common/stylus/variables.styl'
 _border()
   border:.01rem solid $border-color
-.system-home
+.system-index
   color: $theme-color
   .order-count
     display:flex
@@ -206,9 +206,11 @@ _border()
             color:$font-color
             text-indent:.46rem
             position:relative
+            font-size:.18rem
             _border()
             span
               position:absolute
+              font-size:.18rem
               right:.5rem
               color:$red
   .entrance
