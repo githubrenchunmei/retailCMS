@@ -77,14 +77,40 @@ const merchantGoodsListPage = (data) => {
     data
   })
 }
-
+const merchantGoodsPull = (data) => {
+  return axios({
+    url: '/merchantGoods/merchant_goods_pull',
+    method: 'post',
+    type: 'json-data',
+    data
+  })
+}
+const merchantGoodsPut = (data) => {
+  return axios({
+    url: '/merchantGoods/merchant_goods_put',
+    method: 'post',
+    type: 'json-data',
+    data
+  })
+}
+const deleteBatch = (data) => {
+  return axios({
+    url: '/merchantGoods/delete_batch',
+    method: 'post',
+    type: 'json-data',
+    data
+  })
+}
 // 默认全部导出
 export default {
   changePassword,
+  deleteBatch,
   getMerchantLoginInfoList,
   getOrderAllCount,
   login,
   merchantIndex,
+  merchantGoodsPull,
+  merchantGoodsPut,
   merchantGoodsListPage,
   queryBrandList,
   queryGoodsTypeTree,

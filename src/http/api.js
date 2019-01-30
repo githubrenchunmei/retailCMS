@@ -82,9 +82,13 @@ export default function $axios (options) {
         }
         // 拦截status=200时服务端自定义的错误
         switch (data.errno) {
-          case '200':
+          case '200': // 正确获取数据
             break
-          default:
+          case '416': // 登录超时，请重新登录
+            Message.error('登录超时，请重新登录')
+            this.$router.push('/')
+            break
+          default: // 返回错误
             Message.error(data.msg)
             return Promise.reject(data)
         }
